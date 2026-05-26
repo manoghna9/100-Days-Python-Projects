@@ -20,7 +20,6 @@ def set_difficulty():
     else:
         return 5
 
-
 # Choosing a random number between 1 and 100
 print("Welcome to the Number Guessing Game!")
 print("I'm thinking of a number between 1 and 100.")
