@@ -36,7 +36,7 @@ resources = {
 money = 0
 
 
-# Function to check resources
+# Function to check resources to see if enough to make drink order
 def is_resource_sufficient(order_ingredients):
     for item in order_ingredients:
         if order_ingredients[item] > resources[item]:
@@ -45,7 +45,7 @@ def is_resource_sufficient(order_ingredients):
     return True
 
 
-# Function to process coins
+# Function to process coins to calculate total money inserted by user
 def process_coins():
     print("Please insert coins.")
     
@@ -59,7 +59,7 @@ def process_coins():
     return total
 
 
-# Function to check payment
+# Function to check payment is successful and update money if successful transaction
 def is_transaction_successful(money_received, drink_cost):
     global money
 
@@ -74,7 +74,7 @@ def is_transaction_successful(money_received, drink_cost):
     return True
 
 
-# Function to make coffee
+# Function to make coffee according to order and update resources
 def make_coffee(drink_name, order_ingredients):
     for item in order_ingredients:
         resources[item] -= order_ingredients[item]
