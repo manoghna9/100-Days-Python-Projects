@@ -154,7 +154,7 @@ def draw():
     else:
         canvas.create_text(30,20, font ="Arial 10", fill = "white", text = f"Score: {score}")
 
-    window.after(100, draw) #100 millisecods, 1/10th of a sec, calling draw every 1/10th, so 10 frames/sec
+    window.after(140, draw) #100 millisecods, 1/10th of a sec, calling draw every 1/10th, so 10 frames/sec
 
 draw()
 
