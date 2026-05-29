@@ -5,13 +5,12 @@ import pandas as pd
 screen = turtle.Screen()
 screen.title("U.S. States Game")
 
-image = "blank_states_img.gif"
-
+image = "/Users/suma/code/Gitdemo/100-Days-PythonProj/day-25-us-states-game-start/blank_states_img.gif"
 screen.addshape(image)
 turtle.shape(image)
 
 # read csv data
-data = pd.read_csv("50_states.csv")
+data = pd.read_csv("/Users/suma/code/Gitdemo/100-Days-PythonProj/day-25-us-states-game-start/50_states.csv")
 
 # convert states column into list
 all_states = data.state.to_list()
