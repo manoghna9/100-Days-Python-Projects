@@ -10,7 +10,7 @@ phonetic_dict = {
 word = input("Enter a word: ").upper()
 
 try:
-    output_list = [phonetic_dict[letter] for letter in word]
+    output_list = [phonetic_dict[letter] for letter in word] # for every letter in the word, get the corresponding code from the phonetic_dict and add it to the output_list
 
 except KeyError:
     print("Sorry, only letters in the alphabet please.")
