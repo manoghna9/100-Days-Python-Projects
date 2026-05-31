@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+import json
 
 
 # -----PASSWORD GENERATOR MECHANISM-----
@@ -27,10 +28,37 @@ def save():
                 file.write(
                     f"{website} | {email} | {password}\n" #goes to new line after each entry
                 )
+        
+        try:
+            with open("data.json", "r") as data_file: #json data in the form of a dictionary
+                # Reading old data
+                data = json.load(data_file) # keep adding values to json
+        except FileNotFoundError:
+            with open("data.json","w") as data_file:
+                json.dump(new_data, data_file, indent=4)
+        else:
+            #updating old data with new data
+            data.update(new_data)       
+            with open("data.json","w") as data_file:
+                json.dump(new_data, data_file, indent=4) #saving updated data
+        finally:
+            website_input.delete(0, END)
+            password_input.delete(0,END)
 
             # Clear fields after saving
             website_input.delete(0, END)
             password_input.delete(0, END)
+
+    new_data = {website: {"email": email,"password": password,}}
+
+#----FIND PASSWORD----
+
+def find_password():
+    website=website_input.get()
+    with open("data.json") as data_file:
+        data=json.load(data_file)
+        if website in data:
+            
 
 #-----UI SETUP-----
 window = Tk()
@@ -59,6 +87,9 @@ password_input.grid(column=1, row=3)
 
 generate_password_button = Button(text="Generate Password",command=generate_password)
 generate_password_button.grid(column=2, row=3)
+
+search_button = Button(text="Search",width=13, command=find_password)
+search_button.grid(row=1, column=2)
 
 add_button = Button(text="Add", width=36, command=save)
 add_button.grid(column=1, row=4, columnspan=2)
