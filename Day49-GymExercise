@@ -1,0 +1,104 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+import time
+
+# ---------------------- CHROME SETUP ----------------------
+
+chrome_options = Options()
+chrome_options.add_experimental_option("detach", True)
+
+driver = webdriver.Chrome(options=chrome_options)
+
+# ---------------------- OPEN WEBSITE ----------------------
+
+driver.get("https://example.com")
+
+time.sleep(3)
+
+# ---------------------- LOGIN ----------------------
+
+EMAIL = "your_email@gmail.com"
+PASSWORD = "your_password"
+
+# Find email box
+email_input = driver.find_element(By.ID, "email")
+
+# Find password box
+password_input = driver.find_element(By.ID, "password")
+
+# Type login details
+email_input.send_keys(EMAIL)
+password_input.send_keys(PASSWORD)
+
+# Find login button
+login_button = driver.find_element(By.CLASS_NAME, "login-btn")
+
+# Click login
+login_button.click()
+
+time.sleep(5)
+
+# ---------------------- CLASS BOOKING ----------------------
+
+days_to_book = ["Tuesday", "Thursday"]
+
+success_count = 0
+already_booked_count = 0
+failed_count = 0
+
+for day in days_to_book:
+
+    try:
+
+        print(f"\nChecking {day} class...")
+
+        # Find class button
+        class_button = driver.find_element(By.LINK_TEXT, day)
+
+        # Click class
+        class_button.click()
+
+        time.sleep(2)
+
+        # Check if already booked
+        page_text = driver.page_source
+
+        if "Already Booked" in page_text:
+
+            print(f"{day} already booked")
+            already_booked_count += 1
+
+        else:
+
+            # Find booking button
+            book_button = driver.find_element(By.CLASS_NAME, "book-btn")
+
+            # Click booking button
+            book_button.click()
+
+            print(f"{day} booked successfully")
+            success_count += 1
+
+        time.sleep(2)
+
+    except Exception as e:
+
+        print(f"Failed to book {day}")
+        print(e)
+
+        failed_count += 1
+
+# ---------------------- SUMMARY ----------------------
+
+print("\n----- BOOKING SUMMARY -----")
+
+print(f"Successful bookings: {success_count}")
+print(f"Already booked: {already_booked_count}")
+print(f"Failed bookings: {failed_count}")
+
+# ---------------------- KEEP BROWSER OPEN ----------------------
+
+input("Press Enter to close browser...")
+
+driver.quit()
