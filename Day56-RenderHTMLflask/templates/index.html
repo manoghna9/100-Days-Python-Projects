@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>My Flask Website</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+<body>
+
+    <h1>Hello Flask!</h1>
+
+    <h2>Welcome to my website.</h2>
+
+    <img
+        src="{{ url_for('static', filename='images/profile.jpg') }}"
+        alt="Profile Picture"
+        width="250">
+
+    <p>Your lucky number is:</p>
+
+    <h3>{{ num }}</h3>
+
+    <footer>
+
+        <p>Copyright {{ year }}</p>
+
+    </footer>
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+
+</body>
+
+</html>
