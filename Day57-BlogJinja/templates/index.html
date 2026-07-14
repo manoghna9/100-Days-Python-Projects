@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Blog</title>
+</head>
+
+<body>
+
+    <h1>Welcome to My Blog</h1>
+
+    {% for post in posts %}
+
+        <h2>{{ post.title }}</h2>
+
+        <h3>{{ post.subtitle }}</h3>
+
+        <p>{{ post.body }}</p>
+
+        <hr>
+
+    {% endfor %}
+
+</body>
+
+</html>
