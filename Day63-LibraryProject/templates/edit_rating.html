@@ -5,7 +5,11 @@
     <title>Edit Rating</title>
   </head>
   <body>
-    <form action="{{ url_for('edit') }}" method="POST">
+    <form action="{{ url_for('edit') }}" method="POST">  //looks for function named edit in the Flask app
+      //where to send form data and how to send it
+      //action - "When the user submits this form, send the data to this URL."
+      //inside that, url... it replaces what was inside with actual URL for the edit function in the Flask app
+
       <p>Book Name: {{book.title}}</p>
       <p>Current Rating {{book.rating}}</p>
       <input hidden="hidden" name="id" value="{{book.id}}" />
