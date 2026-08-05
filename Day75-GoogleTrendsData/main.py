@@ -382,3 +382,105 @@ plt.tight_layout()
 # ----------------------------------------------------
 
 plt.show()
+
+# ====================================================
+# UNEMPLOYMENT ANALYSIS
+# ====================================================
+
+print("\nCreating Unemployment Visualization...")
+
+# Create figure
+fig, ax1 = plt.subplots(figsize=(15,7))
+
+# ----------------------------------------------------
+# LEFT AXIS
+# Google Searches
+# ----------------------------------------------------
+
+ax1.plot(
+    unemployment.index,
+    unemployment["UE_BENEFITS_WEB_SEARCH"],
+    color="royalblue",
+    linewidth=2,
+    label="Google Searches"
+)
+
+ax1.set_ylabel(
+    "Google Search Interest",
+    color="royalblue",
+    fontsize=12
+)
+
+ax1.tick_params(axis="y", labelcolor="royalblue")
+
+# ----------------------------------------------------
+# RIGHT AXIS
+# Unemployment Rate
+# ----------------------------------------------------
+
+ax2 = ax1.twinx()
+
+ax2.plot(
+    unemployment.index,
+    unemployment["UNRATE"],
+    color="crimson",
+    linewidth=2,
+    label="Unemployment Rate"
+)
+
+ax2.set_ylabel(
+    "Unemployment Rate (%)",
+    color="crimson",
+    fontsize=12
+)
+
+ax2.tick_params(axis="y", labelcolor="crimson")
+
+# ----------------------------------------------------
+# TITLE
+# ----------------------------------------------------
+
+plt.title(
+    "Google Searches for Unemployment Benefits vs Unemployment Rate",
+    fontsize=18,
+    pad=20
+)
+
+# ----------------------------------------------------
+# FORMAT DATES
+# ----------------------------------------------------
+
+year_locator = mdates.YearLocator()
+
+year_formatter = mdates.DateFormatter("%Y")
+
+ax1.xaxis.set_major_locator(year_locator)
+ax1.xaxis.set_major_formatter(year_formatter)
+
+plt.xticks(rotation=45)
+
+# ----------------------------------------------------
+# GRID
+# ----------------------------------------------------
+
+ax1.grid(
+    linestyle="--",
+    alpha=0.4
+)
+
+# ----------------------------------------------------
+# COMBINE LEGENDS
+# ----------------------------------------------------
+
+line1, label1 = ax1.get_legend_handles_labels()
+line2, label2 = ax2.get_legend_handles_labels()
+
+ax1.legend(
+    line1 + line2,
+    label1 + label2,
+    loc="upper left"
+)
+
+plt.tight_layout()
+
+plt.show()
