@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">FIND YOUR NEXT WORKSPACE</p>
+    <h1>Cafes with good coffee<br>and a place to work.</h1>
+
+    <form class="search-form" action="{{ url_for('search') }}" method="get">
+        <input
+            type="text"
+            name="location"
+            value="{{ search_term }}"
+            placeholder="Search by location..."
+        >
+        <button type="submit">Search</button>
+    </form>
+</section>
+
+{% if search_term %}
+    <div class="result-heading">
+        <h2>Cafes near "{{ search_term }}"</h2>
+        <a href="{{ url_for('home') }}">Show all</a>
+    </div>
+{% else %}
+    <h2 class="section-title">All cafes</h2>
+{% endif %}
+
+<section class="cafe-grid">
+    {% for cafe in cafes %}
+    <article class="cafe-card">
+        <img src="{{ cafe['img_url'] }}" alt="{{ cafe['name'] }}">
+
+        <div class="card-body">
+            <h3>{{ cafe['name'] }}</h3>
+            <p class="location">{{ cafe['location'] }}</p>
+
+            <div class="details">
+                {% if cafe['coffee_price'] %}
+                    <span>☕ {{ cafe['coffee_price'] }}</span>
+                {% endif %}
+
+                {% if cafe['seats'] %}
+                    <span>💺 {{ cafe['seats'] }}</span>
+                {% endif %}
+
+                {% if cafe['has_wifi'] == 'Yes' %}
+                    <span>📶 Wi-Fi</span>
+                {% endif %}
+
+                {% if cafe['has_sockets'] == 'Yes' %}
+                    <span>🔌 Sockets</span>
+                {% endif %}
+            </div>
+
+            <div class="card-actions">
+                <a href="{{ cafe['map_url'] }}" target="_blank">View map</a>
+                <a
+                    class="delete"
+                    href="{{ url_for('delete_cafe', cafe_id=cafe['id']) }}"
+                    onclick="return confirm('Delete this cafe?')"
+                >
+                    Delete
+                </a>
+            </div>
+        </div>
+    </article>
+    {% else %}
+        <p class="empty">No cafes found.</p>
+    {% endfor %}
+</section>
+{% endblock %}

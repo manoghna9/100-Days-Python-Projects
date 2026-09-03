@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="form-page">
+    <p class="eyebrow">ADD TO THE DIRECTORY</p>
+    <h1>Add a cafe</h1>
+    <p class="intro">
+        Add a useful workspace for the next person looking for coffee,
+        Wi-Fi and somewhere comfortable to sit.
+    </p>
+
+    <form class="cafe-form" method="post">
+        <label>
+            Cafe name *
+            <input name="name" value="{{ form.get('name', '') }}" required>
+        </label>
+
+        <label>
+            Location *
+            <input name="location" value="{{ form.get('location', '') }}" required>
+        </label>
+
+        <label>
+            Google Maps URL *
+            <input name="map_url" value="{{ form.get('map_url', '') }}" required>
+        </label>
+
+        <label>
+            Image URL *
+            <input name="img_url" value="{{ form.get('img_url', '') }}" required>
+        </label>
+
+        <label>
+            Number of seats
+            <input name="seats" value="{{ form.get('seats', '') }}" placeholder="40">
+        </label>
+
+        <label>
+            Coffee price
+            <input name="coffee_price" value="{{ form.get('coffee_price', '') }}" placeholder="₹150">
+        </label>
+
+        <label>
+            Toilets
+            <select name="has_toilet">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label>
+
+        <label>
+            Wi-Fi
+            <select name="has_wifi">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label>
+
+        <label>
+            Power sockets
+            <select name="has_sockets">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </label>
+
+        <button type="submit">Add cafe</button>
+    </form>
+</section>
+{% endblock %}
