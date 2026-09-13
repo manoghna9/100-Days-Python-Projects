@@ -1,0 +1,446 @@
+/* --------------------------------------------------
+   BASIC RESET
+-------------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* --------------------------------------------------
+   PAGE
+-------------------------------------------------- */
+
+body {
+
+    min-height: 100vh;
+
+    background: #11121a;
+
+    color: #f4f1ea;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+}
+
+
+/* --------------------------------------------------
+   MAIN CONTAINER
+-------------------------------------------------- */
+
+.container {
+
+    width: min(850px, 90%);
+
+    margin: 0 auto;
+
+    padding: 80px 0 40px;
+
+}
+
+
+/* --------------------------------------------------
+   HEADER
+-------------------------------------------------- */
+
+header {
+
+    margin-bottom: 50px;
+
+}
+
+.eyebrow {
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    color: #a78bfa;
+
+    margin-bottom: 18px;
+
+}
+
+h1 {
+
+    font-size: clamp(48px, 8vw, 82px);
+
+    line-height: 0.95;
+
+    font-weight: 700;
+
+    letter-spacing: -4px;
+
+}
+
+h1 span {
+
+    color: #a78bfa;
+
+}
+
+.subtitle {
+
+    margin-top: 25px;
+
+    max-width: 500px;
+
+    color: #9999a8;
+
+    line-height: 1.6;
+
+    font-size: 16px;
+
+}
+
+
+/* --------------------------------------------------
+   ADD TASK AREA
+-------------------------------------------------- */
+
+.add-task {
+
+    margin-bottom: 55px;
+
+}
+
+form {
+
+    display: flex;
+
+    gap: 12px;
+
+}
+
+input {
+
+    flex: 1;
+
+    padding: 18px 20px;
+
+    border: 1px solid #2b2c38;
+
+    border-radius: 12px;
+
+    background: #191a24;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.2s;
+
+}
+
+input:focus {
+
+    border-color: #a78bfa;
+
+}
+
+input::placeholder {
+
+    color: #666775;
+
+}
+
+button {
+
+    padding: 0 28px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #a78bfa;
+
+    color: #11121a;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+button:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+/* --------------------------------------------------
+   TASK HEADER
+-------------------------------------------------- */
+
+.task-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+
+}
+
+.task-header h2 {
+
+    font-size: 18px;
+
+}
+
+.task-header span {
+
+    font-size: 13px;
+
+    color: #777887;
+
+}
+
+
+/* --------------------------------------------------
+   TASK CARDS
+-------------------------------------------------- */
+
+.task-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+.task-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px 20px;
+
+    background: #191a24;
+
+    border: 1px solid #272833;
+
+    border-radius: 12px;
+
+    transition: 0.2s;
+
+}
+
+.task-card:hover {
+
+    border-color: #444552;
+
+    transform: translateX(3px);
+
+}
+
+
+/* --------------------------------------------------
+   COMPLETE BUTTON
+-------------------------------------------------- */
+
+.check {
+
+    width: 25px;
+
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #555665;
+
+    border-radius: 50%;
+
+    color: #a78bfa;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+}
+
+
+/* --------------------------------------------------
+   TASK TEXT
+-------------------------------------------------- */
+
+.task-title {
+
+    flex: 1;
+
+    font-size: 16px;
+
+}
+
+
+/* --------------------------------------------------
+   COMPLETED TASK
+-------------------------------------------------- */
+
+.task-card.completed .task-title {
+
+    text-decoration: line-through;
+
+    color: #656674;
+
+}
+
+.task-card.completed .check {
+
+    background: #a78bfa;
+
+    border-color: #a78bfa;
+
+    color: #11121a;
+
+}
+
+
+/* --------------------------------------------------
+   DELETE BUTTON
+-------------------------------------------------- */
+
+.delete {
+
+    color: #666775;
+
+    text-decoration: none;
+
+    font-size: 24px;
+
+    line-height: 1;
+
+    transition: 0.2s;
+
+}
+
+.delete:hover {
+
+    color: #ff7b8a;
+
+}
+
+
+/* --------------------------------------------------
+   EMPTY STATE
+-------------------------------------------------- */
+
+.empty-state {
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+    border: 1px dashed #30313d;
+
+    border-radius: 15px;
+
+}
+
+.empty-icon {
+
+    font-size: 30px;
+
+    color: #a78bfa;
+
+    margin-bottom: 15px;
+
+}
+
+.empty-state h2 {
+
+    margin-bottom: 8px;
+
+}
+
+.empty-state p {
+
+    color: #777887;
+
+}
+
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+
+footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 80px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #272833;
+
+    color: #60616e;
+
+    font-size: 12px;
+
+}
+
+
+/* --------------------------------------------------
+   MOBILE
+-------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .container {
+
+        padding-top: 50px;
+
+    }
+
+    form {
+
+        flex-direction: column;
+
+    }
+
+    button {
+
+        padding: 16px;
+
+    }
+
+    h1 {
+
+        letter-spacing: -2px;
+
+    }
+
+    footer {
+
+        flex-direction: column;
+
+        gap: 8px;
+
+    }
+
+}
