@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Colour Lab</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <main class="container">
+
+
+        <!-- ==========================================
+             HEADER
+        =========================================== -->
+
+        <header>
+
+            <p class="eyebrow">
+                IMAGE COLOUR ANALYSER
+            </p>
+
+            <h1>
+                Find the colours
+                <span>inside.</span>
+            </h1>
+
+            <p class="intro">
+
+                Upload an image and discover the
+                ten colours that appear most often.
+
+            </p>
+
+        </header>
+
+
+        <!-- ==========================================
+             UPLOAD AREA
+        =========================================== -->
+
+        <section class="upload-section">
+
+            <form
+                action="/analyse"
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                <label class="upload-box">
+
+                    <span class="upload-icon">
+                        +
+                    </span>
+
+                    <span class="upload-title">
+                        Choose an image
+                    </span>
+
+                    <span class="upload-subtitle">
+                        PNG, JPG, JPEG or other image files
+                    </span>
+
+                    <input
+                        type="file"
+                        name="image"
+                        accept="image/*"
+                        required
+                    >
+
+                </label>
+
+
+                <button type="submit">
+                    Analyse colours →
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ==========================================
+             ERROR MESSAGE
+        =========================================== -->
+
+        {% if error %}
+
+            <div class="error">
+
+                {{ error }}
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- ==========================================
+             RESULTS
+        =========================================== -->
+
+        {% if colours %}
+
+            <section class="results">
+
+
+                <!-- Uploaded image -->
+
+                <div class="image-preview">
+
+                    <p class="section-label">
+                        YOUR IMAGE
+                    </p>
+
+                    <img
+                        src="{{ image }}"
+                        alt="Uploaded image"
+                    >
+
+                </div>
+
+
+                <!-- Colour palette -->
+
+                <div class="palette">
+
+                    <div class="palette-heading">
+
+                        <div>
+
+                            <p class="section-label">
+                                COLOUR PALETTE
+                            </p>
+
+                            <h2>
+                                Top 10
+                            </h2>
+
+                        </div>
+
+                        <p>
+                            Most common colours
+                        </p>
+
+                    </div>
+
+
+                    <div class="colour-grid">
+
+                        {% for colour in colours %}
+
+                            <div class="colour-card">
+
+                                <div
+                                    class="swatch"
+                                    style="background-color: {{ colour.hex }};"
+
+                                ></div>
+
+                                <div class="colour-info">
+
+                                    <strong>
+                                        {{ colour.hex }}
+                                    </strong>
+
+                                    <span>
+                                        {{ colour.rgb }}
+                                    </span>
+
+                                    <small>
+                                        {{ colour.percentage }}%
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        {% endif %}
+
+
+        <!-- ==========================================
+             FOOTER
+        =========================================== -->
+
+        <footer>
+
+            <span>
+                Built with Python · Flask · NumPy
+            </span>
+
+            <span>
+                Image Colour Lab
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</body>
+
+</html>

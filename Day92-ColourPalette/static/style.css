@@ -1,0 +1,496 @@
+/* ==================================================
+   RESET
+================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==================================================
+   PAGE
+================================================== */
+
+body {
+
+    min-height: 100vh;
+
+    background: #11121a;
+
+    color: #f4f1ea;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+}
+
+
+/* ==================================================
+   CONTAINER
+================================================== */
+
+.container {
+
+    width: min(1050px, 90%);
+
+    margin: auto;
+
+    padding: 75px 0 40px;
+
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+header {
+
+    max-width: 700px;
+
+    margin-bottom: 50px;
+
+}
+
+.eyebrow {
+
+    color: #a78bfa;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 18px;
+
+}
+
+h1 {
+
+    font-size: clamp(48px, 8vw, 82px);
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+
+}
+
+h1 span {
+
+    color: #a78bfa;
+
+}
+
+.intro {
+
+    max-width: 550px;
+
+    margin-top: 25px;
+
+    color: #9293a2;
+
+    line-height: 1.7;
+
+    font-size: 17px;
+
+}
+
+
+/* ==================================================
+   UPLOAD SECTION
+================================================== */
+
+.upload-section {
+
+    margin-bottom: 50px;
+
+}
+
+form {
+
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 12px;
+
+}
+
+
+/* Upload box */
+
+.upload-box {
+
+    flex: 1;
+
+    min-height: 160px;
+
+    border: 1px dashed #454653;
+
+    border-radius: 15px;
+
+    background: #191a24;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+}
+
+.upload-box:hover {
+
+    border-color: #a78bfa;
+
+    background: #1d1e2a;
+
+}
+
+.upload-icon {
+
+    font-size: 35px;
+
+    color: #a78bfa;
+
+    margin-bottom: 10px;
+
+}
+
+.upload-title {
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+
+}
+
+.upload-subtitle {
+
+    font-size: 12px;
+
+    color: #666775;
+
+}
+
+input[type="file"] {
+
+    display: none;
+
+}
+
+
+/* ==================================================
+   BUTTON
+================================================== */
+
+button {
+
+    align-self: center;
+
+    padding: 18px 25px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #a78bfa;
+
+    color: #11121a;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+button:hover {
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ==================================================
+   ERROR
+================================================== */
+
+.error {
+
+    padding: 15px 18px;
+
+    margin-bottom: 30px;
+
+    border: 1px solid #5a3038;
+
+    border-radius: 10px;
+
+    color: #ff9aa6;
+
+    background: #21171c;
+
+}
+
+
+/* ==================================================
+   RESULTS
+================================================== */
+
+.results {
+
+    display: grid;
+
+    grid-template-columns: 0.8fr 1.2fr;
+
+    gap: 40px;
+
+}
+
+
+/* ==================================================
+   IMAGE
+================================================== */
+
+.section-label {
+
+    color: #777887;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+}
+
+.image-preview img {
+
+    width: 100%;
+
+    max-height: 500px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    border: 1px solid #292a36;
+
+}
+
+
+/* ==================================================
+   PALETTE
+================================================== */
+
+.palette-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    margin-bottom: 20px;
+
+}
+
+.palette-heading h2 {
+
+    font-size: 32px;
+
+}
+
+.palette-heading > p {
+
+    color: #666775;
+
+    font-size: 12px;
+
+}
+
+
+/* ==================================================
+   COLOUR GRID
+================================================== */
+
+.colour-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+
+}
+
+
+/* ==================================================
+   COLOUR CARD
+================================================== */
+
+.colour-card {
+
+    padding: 10px;
+
+    background: #191a24;
+
+    border: 1px solid #292a36;
+
+    border-radius: 12px;
+
+    transition: 0.2s;
+
+}
+
+.colour-card:hover {
+
+    transform: translateY(-2px);
+
+    border-color: #444552;
+
+}
+
+
+/* Colour swatch */
+
+.swatch {
+
+    height: 80px;
+
+    border-radius: 8px;
+
+    margin-bottom: 12px;
+
+}
+
+
+/* Colour information */
+
+.colour-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 2px 4px 4px;
+
+}
+
+.colour-info strong {
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+}
+
+.colour-info span {
+
+    font-size: 11px;
+
+    color: #777887;
+
+}
+
+.colour-info small {
+
+    color: #a78bfa;
+
+    font-size: 10px;
+
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 80px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #292a36;
+
+    color: #5e5f6c;
+
+    font-size: 11px;
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 750px) {
+
+    .container {
+
+        padding-top: 50px;
+
+    }
+
+    form {
+
+        flex-direction: column;
+
+    }
+
+    button {
+
+        width: 100%;
+
+    }
+
+    .results {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    h1 {
+
+        letter-spacing: -2px;
+
+    }
+
+    .colour-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    footer {
+
+        flex-direction: column;
+
+        gap: 8px;
+
+    }
+
+}
