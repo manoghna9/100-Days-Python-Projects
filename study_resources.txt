@@ -1,0 +1,18 @@
+Study Resources for:  source /Users/suma/code/Gitdemo/100-Days-PythonProj/.venv/bin/activate
+==================================================
+
+1. Python Virtual Environment - venv - W3Schools
+https://www.w3schools.com/python/python_virtualenv.asp
+
+2. Python venv: How To Create, Activate, Deactivate, And Delete
+https://python.land/virtual-environments/virtualenv
+
+3. Virtualenv ". venv/bin/activate" vs "source venv/bin/activate"
+https://stackoverflow.com/questions/11027782/virtualenv-venv-bin-activate-vs-source-venv-bin-activate
+
+4. venv — Creation of virtual environments — Python 3.14.7 documentation
+https://docs.python.org/3/library/venv.html
+
+5. Activating virtual environment for python when "source bin/activate ...
+https://stackoverflow.com/questions/60470558/activating-virtual-environment-for-python-when-source-bin-activate-not-working
+
