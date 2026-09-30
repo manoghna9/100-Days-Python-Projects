@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Orders | ByteCart
+{% endblock %}
+
+
+{% block content %}
+
+<h1>
+    My Orders
+</h1>
+
+
+{% if orders %}
+
+<div class="orders-list">
+
+    {% for order in orders %}
+
+    <article class="order-card">
+
+        <div>
+
+            <h3>
+                Order #{{ order.id }}
+            </h3>
+
+            <p>
+                Status: {{ order.status }}
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                ${{ "%.2f"|format(
+                    order.total / 100
+                ) }}
+            </strong>
+
+        </div>
+
+    </article>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<p>
+    You haven't placed any orders yet.
+</p>
+
+<a href="{{ url_for('home') }}"
+   class="button">
+    Start Shopping
+</a>
+
+{% endif %}
+
+{% endblock %}

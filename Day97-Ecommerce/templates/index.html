@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}
+ByteCart | Student Tech Store
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <p class="eyebrow">
+        STUDENT TECH STORE
+    </p>
+
+    <h1>
+        Useful tech.<br>
+        Nothing unnecessary.
+    </h1>
+
+    <p>
+        Simple tools and accessories for students,
+        developers and curious people.
+    </p>
+
+</section>
+
+
+<section>
+
+    <h2>
+        Featured Products
+    </h2>
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <article class="product-card">
+
+            <div class="product-image">
+                {{ product.name[0] }}
+            </div>
+
+            <div class="product-info">
+
+                <h3>
+                    {{ product.name }}
+                </h3>
+
+                <p>
+                    {{ product.description }}
+                </p>
+
+                <strong>
+                    ${{ "%.2f"|format(product.price / 100) }}
+                </strong>
+
+                <div class="product-actions">
+
+                    <a href="{{ url_for(
+                        'product',
+                        product_id=product.id
+                    ) }}">
+                        View
+                    </a>
+
+                    <a href="{{ url_for(
+                        'add_to_cart',
+                        product_id=product.id
+                    ) }}"
+                       class="button">
+                        Add to cart
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}
+Your Cart | ByteCart
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Your Cart</h1>
+
+
+{% if cart_items %}
+
+<div class="cart-container">
+
+    <div>
+
+        {% for item in cart_items %}
+
+        <div class="cart-item">
+
+            <div>
+
+                <h3>
+                    {{ item.product.name }}
+                </h3>
+
+                <p>
+                    Quantity: {{ item.quantity }}
+                </p>
+
+            </div>
+
+            <div>
+
+                <strong>
+                    ${{ "%.2f"|format(
+                        item.subtotal / 100
+                    ) }}
+                </strong>
+
+                <br>
+
+                <a href="{{ url_for(
+                    'remove_from_cart',
+                    product_id=item.product.id
+                ) }}">
+                    Remove
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <aside class="cart-summary">
+
+        <h2>
+            Summary
+        </h2>
+
+        <p>
+            Total:
+            <strong>
+                ${{ "%.2f"|format(total / 100) }}
+            </strong>
+        </p>
+
+        {% if current_user.is_authenticated %}
+
+            <a href="{{ url_for('checkout') }}"
+               class="button full-button">
+                Continue to Checkout
+            </a>
+
+        {% else %}
+
+            <p>
+                Please log in to continue.
+            </p>
+
+            <a href="{{ url_for('login') }}"
+               class="button full-button">
+                Login
+            </a>
+
+        {% endif %}
+
+    </aside>
+
+</div>
+
+{% else %}
+
+<div class="empty-cart">
+
+    <h2>
+        Your cart is empty.
+    </h2>
+
+    <p>
+        Find something useful for your setup.
+    </p>
+
+    <a href="{{ url_for('home') }}"
+       class="button">
+        Start Shopping
+    </a>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

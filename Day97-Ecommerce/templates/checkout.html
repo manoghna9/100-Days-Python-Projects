@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}
+Checkout | ByteCart
+{% endblock %}
+
+
+{% block content %}
+
+<div class="checkout-page">
+
+    <div>
+
+        <p class="eyebrow">
+            CHECKOUT
+        </p>
+
+        <h1>
+            Almost there.
+        </h1>
+
+        <p>
+            Review your order before continuing
+            to secure payment.
+        </p>
+
+    </div>
+
+
+    <div class="checkout-summary">
+
+        {% for item in cart_items %}
+
+        <div class="checkout-item">
+
+            <span>
+                {{ item.product.name }}
+                × {{ item.quantity }}
+            </span>
+
+            <strong>
+                ${{ "%.2f"|format(
+                    item.subtotal / 100
+                ) }}
+            </strong>
+
+        </div>
+
+        {% endfor %}
+
+
+        <hr>
+
+
+        <div class="checkout-total">
+
+            <span>
+                Total
+            </span>
+
+            <strong>
+                ${{ "%.2f"|format(total / 100) }}
+            </strong>
+
+        </div>
+
+
+        <form
+            action="{{ url_for(
+                'create_checkout_session'
+            ) }}"
+            method="POST"
+        >
+
+            <button
+                type="submit"
+                class="full-button"
+            >
+                Pay with Stripe
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

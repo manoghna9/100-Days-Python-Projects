@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ product.name }} | ByteCart
+{% endblock %}
+
+
+{% block content %}
+
+<section class="product-page">
+
+    <div class="large-product-image">
+        {{ product.name[0] }}
+    </div>
+
+    <div>
+
+        <p class="eyebrow">
+            BYTECART PRODUCT
+        </p>
+
+        <h1>
+            {{ product.name }}
+        </h1>
+
+        <p class="product-description">
+            {{ product.description }}
+        </p>
+
+        <h2>
+            ${{ "%.2f"|format(product.price / 100) }}
+        </h2>
+
+        <a href="{{ url_for(
+            'add_to_cart',
+            product_id=product.id
+        ) }}"
+           class="button">
+            Add to Cart
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+Payment Successful | ByteCart
+{% endblock %}
+
+
+{% block content %}
+
+<div class="success-box">
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+    <p class="eyebrow">
+        ORDER CONFIRMED
+    </p>
+
+    <h1>
+        Payment successful!
+    </h1>
+
+    <p>
+        Thanks for your order, {{ current_user.name }}.
+    </p>
+
+    <p>
+        Order #{{ order.id }}
+    </p>
+
+    <a href="{{ url_for('orders') }}"
+       class="button">
+        View My Orders
+    </a>
+
+</div>
+
+{% endblock %}
