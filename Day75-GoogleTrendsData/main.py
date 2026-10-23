@@ -12,10 +12,6 @@ In this project we will learn
 • Plotting multiple graphs
 """
 
-# -----------------------------
-# IMPORT LIBRARIES
-# -----------------------------
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
@@ -23,10 +19,7 @@ import matplotlib.dates as mdates
 # Make graphs look nicer
 plt.style.use("ggplot")
 
-# -----------------------------
-# LOAD DATASETS
-# -----------------------------
-
+#loading datasets
 tesla = pd.read_csv("data/TESLA Search Trend vs Price.csv")
 bitcoin = pd.read_csv("data/Daily Bitcoin Price.csv")
 unemployment = pd.read_csv("data/UE Benefits Search vs UE Rate 2004-20.csv")
@@ -35,10 +28,7 @@ print("=" * 70)
 print("DATASETS LOADED SUCCESSFULLY")
 print("=" * 70)
 
-# ----------------------------------------------------
-# EXPLORE TESLA DATA
-# ----------------------------------------------------
-
+#explore tesla data
 print("\nTESLA DATA")
 print("-" * 40)
 
@@ -59,10 +49,8 @@ print(tesla.describe())
 print("\nMissing Values")
 print(tesla.isna().sum())
 
-# ----------------------------------------------------
-# EXPLORE BITCOIN DATA
-# ----------------------------------------------------
 
+#explore bitcoin data
 print("\nBITCOIN DATA")
 print("-" * 40)
 
@@ -77,9 +65,8 @@ print(bitcoin.info())
 print("\nMissing Values")
 print(bitcoin.isna().sum())
 
-# ----------------------------------------------------
 # EXPLORE UNEMPLOYMENT DATA
-# ----------------------------------------------------
+
 
 print("\nUNEMPLOYMENT DATA")
 print("-" * 40)
@@ -95,9 +82,7 @@ print(unemployment.info())
 print("\nMissing Values")
 print(unemployment.isna().sum())
 
-# ====================================================
-# DATA CLEANING
-# ====================================================
+#data cleaning
 
 print("\n")
 print("=" * 70)
@@ -131,9 +116,7 @@ print(type(bitcoin.index))
 print("\nUnemployment Index")
 print(type(unemployment.index))
 
-# ====================================================
-# RESAMPLING
-# ====================================================
+#resampling bitcoin data to monthly average
 
 print("\n")
 print("=" * 70)
@@ -144,10 +127,7 @@ bitcoin_monthly = bitcoin.resample("M").mean()
 
 print(bitcoin_monthly.head())
 
-# ====================================================
-# REMOVE MISSING VALUES
-# ====================================================
-
+#remove missing values
 tesla.dropna(inplace=True)
 bitcoin.dropna(inplace=True)
 bitcoin_monthly.dropna(inplace=True)
@@ -155,9 +135,7 @@ unemployment.dropna(inplace=True)
 
 print("\nAll missing values removed!")
 
-# ====================================================
-# DATA IS READY
-# ====================================================
+#ready to visualize the data
 
 print("\n")
 print("=" * 70)
@@ -172,18 +150,13 @@ print(bitcoin_monthly.head())
 
 print("\nUnemployment")
 print(unemployment.head())
-# ====================================================
-# TESLA SEARCH TREND VS STOCK PRICE
-# ====================================================
 
+#tesla search trend vs stock price visualization
 print("\nCreating Tesla Visualization...")
 
 # Create a new figure and axis
 fig, ax1 = plt.subplots(figsize=(15, 7))
 
-# ----------------------------------------------------
-# LEFT Y-AXIS (Google Searches)
-# ----------------------------------------------------
 
 ax1.set_title(
     "Tesla Google Search Interest vs Stock Price",
@@ -210,9 +183,6 @@ ax1.plot(
 # Make left axis labels blue
 ax1.tick_params(axis="y", labelcolor="tab:blue")
 
-# ----------------------------------------------------
-# RIGHT Y-AXIS (Stock Price)
-# ----------------------------------------------------
 
 ax2 = ax1.twinx()
 
@@ -232,9 +202,7 @@ ax2.plot(
 
 ax2.tick_params(axis="y", labelcolor="tab:red")
 
-# ----------------------------------------------------
-# FORMAT THE DATE AXIS
-# ----------------------------------------------------
+
 
 year_locator = mdates.YearLocator()
 
@@ -247,9 +215,6 @@ ax1.xaxis.set_major_formatter(year_formatter)
 # Rotate dates for readability
 plt.xticks(rotation=45)
 
-# ----------------------------------------------------
-# GRID
-# ----------------------------------------------------
 
 ax1.grid(
     True,
@@ -257,9 +222,6 @@ ax1.grid(
     alpha=0.4
 )
 
-# ----------------------------------------------------
-# LEGENDS
-# ----------------------------------------------------
 
 line1, label1 = ax1.get_legend_handles_labels()
 
@@ -271,32 +233,20 @@ ax1.legend(
     loc="upper left"
 )
 
-# ----------------------------------------------------
-# REMOVE EXTRA WHITESPACE
-# ----------------------------------------------------
 
 plt.tight_layout()
 
-# ----------------------------------------------------
-# DISPLAY GRAPH
-# ----------------------------------------------------
 
 plt.show()
-# ====================================================
-# BITCOIN ANALYSIS
-# ====================================================
 
+# BITCOIN ANALYSIS
 print("\nCreating Bitcoin Visualization...")
 
-# ----------------------------------------------------
 # CREATE A NEW FIGURE
-# ----------------------------------------------------
 
 fig, ax = plt.subplots(figsize=(15, 7))
 
-# ----------------------------------------------------
 # PLOT DAILY BITCOIN PRICE
-# ----------------------------------------------------
 
 ax.plot(
     bitcoin.index,
@@ -307,9 +257,7 @@ ax.plot(
     label="Daily Price"
 )
 
-# ----------------------------------------------------
 # PLOT MONTHLY AVERAGE PRICE
-# ----------------------------------------------------
 
 ax.plot(
     bitcoin_monthly.index,
@@ -321,9 +269,7 @@ ax.plot(
     label="Monthly Average"
 )
 
-# ----------------------------------------------------
 # TITLE AND LABELS
-# ----------------------------------------------------
 
 ax.set_title(
     "Bitcoin Daily Price vs Monthly Average",
@@ -341,9 +287,7 @@ ax.set_ylabel(
     fontsize=12
 )
 
-# ----------------------------------------------------
 # FORMAT DATES
-# ----------------------------------------------------
 
 year_locator = mdates.YearLocator()
 
@@ -355,9 +299,7 @@ ax.xaxis.set_major_formatter(year_formatter)
 
 plt.xticks(rotation=45)
 
-# ----------------------------------------------------
 # GRID
-# ----------------------------------------------------
 
 ax.grid(
     True,
@@ -365,37 +307,27 @@ ax.grid(
     alpha=0.4
 )
 
-# ----------------------------------------------------
 # LEGEND
-# ----------------------------------------------------
 
 ax.legend()
 
-# ----------------------------------------------------
 # REMOVE EXTRA WHITESPACE
-# ----------------------------------------------------
 
 plt.tight_layout()
 
-# ----------------------------------------------------
 # DISPLAY GRAPH
-# ----------------------------------------------------
 
 plt.show()
 
-# ====================================================
 # UNEMPLOYMENT ANALYSIS
-# ====================================================
 
 print("\nCreating Unemployment Visualization...")
 
 # Create figure
 fig, ax1 = plt.subplots(figsize=(15,7))
 
-# ----------------------------------------------------
 # LEFT AXIS
 # Google Searches
-# ----------------------------------------------------
 
 ax1.plot(
     unemployment.index,
@@ -413,10 +345,8 @@ ax1.set_ylabel(
 
 ax1.tick_params(axis="y", labelcolor="royalblue")
 
-# ----------------------------------------------------
 # RIGHT AXIS
 # Unemployment Rate
-# ----------------------------------------------------
 
 ax2 = ax1.twinx()
 
@@ -436,9 +366,7 @@ ax2.set_ylabel(
 
 ax2.tick_params(axis="y", labelcolor="crimson")
 
-# ----------------------------------------------------
-# TITLE
-# ----------------------------------------------------
+#title and labels
 
 plt.title(
     "Google Searches for Unemployment Benefits vs Unemployment Rate",
@@ -446,10 +374,7 @@ plt.title(
     pad=20
 )
 
-# ----------------------------------------------------
-# FORMAT DATES
-# ----------------------------------------------------
-
+#format the date axis
 year_locator = mdates.YearLocator()
 
 year_formatter = mdates.DateFormatter("%Y")
@@ -459,18 +384,12 @@ ax1.xaxis.set_major_formatter(year_formatter)
 
 plt.xticks(rotation=45)
 
-# ----------------------------------------------------
-# GRID
-# ----------------------------------------------------
-
 ax1.grid(
     linestyle="--",
     alpha=0.4
 )
 
-# ----------------------------------------------------
-# COMBINE LEGENDS
-# ----------------------------------------------------
+#combine legends from both axes
 
 line1, label1 = ax1.get_legend_handles_labels()
 line2, label2 = ax2.get_legend_handles_labels()
