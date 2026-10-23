@@ -17,21 +17,14 @@ This file demonstrates:
 
 import numpy as np
 
-
-# ============================================================
-# 1. CREATING A NUMPY ARRAY
-# ============================================================
+#creating a 1D NumPy array
 
 numbers = np.array([10, 20, 30, 40, 50])
 
 print("1D NumPy array:")
 print(numbers)
 
-
-# ============================================================
-# 2. CHECKING THE TYPE
-# ============================================================
-
+#checking type of the array
 print("\nType:")
 print(type(numbers))
 
@@ -41,25 +34,17 @@ print("\nArray data type:")
 print(numbers.dtype)
 
 
-# ============================================================
-# 3. ARRAY DIMENSIONS
-# ============================================================
+#array's dimensions
 
 print("\nNumber of dimensions:")
 print(numbers.ndim)
 
-
-# ============================================================
-# 4. ARRAY SHAPE
-# ============================================================
-
+#array shape
 print("\nShape:")
 print(numbers.shape)
 
 
-# ============================================================
-# 5. TWO-DIMENSIONAL ARRAY
-# ============================================================
+#numpy arrays can be multi-dimensional. Let's create a 2D array (matrix).
 
 matrix = np.array([
     [1, 2, 3],
@@ -77,9 +62,7 @@ print("\nShape:")
 print(matrix.shape)
 
 
-# ============================================================
-# 6. THREE-DIMENSIONAL ARRAY
-# ============================================================
+#3d array (cube)
 
 cube = np.array([
     [
@@ -102,10 +85,7 @@ print("\nShape:")
 print(cube.shape)
 
 
-# ============================================================
-# 7. INDEXING
-# ============================================================
-
+#indexing a 1D array
 print("\nFirst element:")
 print(numbers[0])
 
@@ -116,9 +96,7 @@ print("\nLast element:")
 print(numbers[-1])
 
 
-# ============================================================
-# 8. INDEXING A MATRIX
-# ============================================================
+#indexing a 2D array (matrix)
 
 print("\nMatrix:")
 print(matrix)
@@ -132,10 +110,7 @@ print("\nElement at row 2, column 2:")
 print(matrix[2, 2])
 
 
-# ============================================================
-# 9. SLICING
-# ============================================================
-
+#slicing a 1D array
 print("\nFirst three elements:")
 print(numbers[:3])
 
@@ -146,9 +121,7 @@ print("\nEvery second element:")
 print(numbers[::2])
 
 
-# ============================================================
-# 10. MATRIX SLICING
-# ============================================================
+#matrix slicing
 
 print("\nFirst two rows:")
 print(matrix[:2])
@@ -157,10 +130,7 @@ print("\nFirst two columns:")
 print(matrix[:, :2])
 
 
-# ============================================================
-# 11. np.arange()
-# ============================================================
-
+#array range generation using np.arange()
 sequence = np.arange(1, 11)
 
 print("\nNumbers from 1 to 10:")
@@ -177,11 +147,6 @@ even_numbers = np.arange(
 print("\nEven numbers:")
 print(even_numbers)
 
-
-# ============================================================
-# 12. np.zeros()
-# ============================================================
-
 zeros = np.zeros(5)
 
 print("\nArray of zeros:")
@@ -195,10 +160,7 @@ print("\n2 x 3 zero matrix:")
 print(zero_matrix)
 
 
-# ============================================================
-# 13. np.ones()
-# ============================================================
-
+#np.ones() creates an array filled with ones.
 ones = np.ones(5)
 
 print("\nArray of ones:")
@@ -210,11 +172,7 @@ one_matrix = np.ones((3, 3))
 print("\n3 x 3 matrix of ones:")
 print(one_matrix)
 
-
-# ============================================================
-# 14. np.full()
-# ============================================================
-
+# 14. np.full() creates an array filled with a specified value.
 filled = np.full(
     (2, 4),
     7
@@ -223,11 +181,7 @@ filled = np.full(
 print("\n2 x 4 array filled with 7:")
 print(filled)
 
-
-# ============================================================
-# 15. RESHAPE
-# ============================================================
-
+#reshape 
 numbers = np.arange(1, 13)
 
 print("\nOriginal array:")
@@ -241,11 +195,7 @@ reshaped = numbers.reshape(
 print("\nReshaped into 3 x 4:")
 print(reshaped)
 
-
-# ============================================================
-# 16. ARRAY ARITHMETIC
-# ============================================================
-
+#array arithmetic operations
 a = np.array([
     1,
     2,
@@ -277,10 +227,7 @@ print("\na / b:")
 print(a / b)
 
 
-# ============================================================
-# 17. SCALAR MULTIPLICATION
-# ============================================================
-
+#scalar multiplication
 prices = np.array([
     100,
     200,
@@ -296,9 +243,7 @@ print("\nPrices after 10% discount:")
 print(discounted_prices)
 
 
-# ============================================================
-# 18. BROADCASTING
-# ============================================================
+#broadcasting
 
 scores = np.array([
     [80, 85, 90],
@@ -319,9 +264,8 @@ print(scores + bonus)
 # to every element.
 
 
-# ============================================================
-# 19. BROADCASTING WITH ARRAYS
-# ============================================================
+#broadcasting of arrays means that NumPy can perform operations on arrays of different shapes, 
+#automatically expanding the smaller array to match the shape of the larger one.
 
 marks = np.array([
     [70, 80, 90],
@@ -344,10 +288,7 @@ print("\nAfter broadcasting:")
 print(marks + extra_marks)
 
 
-# ============================================================
-# 20. MATRIX MULTIPLICATION
-# ============================================================
-
+#matrix multiplication
 matrix_a = np.array([
     [1, 2],
     [3, 4]
@@ -377,10 +318,7 @@ print("\nUsing np.matmul():")
 print(np.matmul(matrix_a, matrix_b))
 
 
-# ============================================================
-# 21. AGGREGATION FUNCTIONS
-# ============================================================
-
+#aggregate functions
 data = np.array([
     [10, 20, 30],
     [40, 50, 60]
@@ -402,10 +340,7 @@ print("\nMinimum:")
 print(data.min())
 
 
-# ============================================================
-# 22. AXIS
-# ============================================================
-
+#axis argument specifies the dimension along which the operation is performed.
 print("\nColumn totals:")
 print(data.sum(axis=0))
 
